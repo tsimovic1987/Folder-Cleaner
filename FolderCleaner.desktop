@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Folder Cleaner
+Comment=Sortiert Dateien auf dem Schreibtisch
+Exec=/usr/bin/python3 Your/Path/to/the/Folder/main.py
+Icon=system-file-manager
+Terminal=false
+Categories=Utility;
+Path=Your/Path/to/the/Folder
