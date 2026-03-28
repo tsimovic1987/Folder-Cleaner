@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=Folder Cleaner
-Comment=Sortiert Dateien auf dem Schreibtisch
+Comment=Sort Your Files in Folders
 Exec=/usr/bin/python3 Your/Path/to/the/Folder/main.py
 Icon=system-file-manager
 Terminal=false
