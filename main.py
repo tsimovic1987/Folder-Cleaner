@@ -3,9 +3,9 @@ import shutil
 import customtkinter as ctk
 from pathlib import Path
 
-# Erscheinungsbild konfigurieren
-ctk.set_appearance_mode("dark")  # Modes: "System" (standard), "Dark", "Light"
-ctk.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
+
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("green")
 
 class FolderCleanerApp(ctk.CTk):
     def __init__(self):
@@ -14,14 +14,14 @@ class FolderCleanerApp(ctk.CTk):
         self.title("Moderner Folder Cleaner")
         self.geometry("550x500")
 
-        self.base_path = Path("/home/shz0/Schreibtisch/")
+        self.base_path = Path(__file__).parent.resolve()
         self.selected_folder = None
 
-        # UI Komponenten
+        # UI
         self.label = ctk.CTkLabel(self, text="Choose Dictonary", font=("Helvetica", 16))
         self.label.pack(pady=10)
 
-        # Dropdown Menü (OptionMenu)
+        # Dropdown Menu (OptionMenu)
         self.folders = self.get_folders()
         self.option_menu = ctk.CTkOptionMenu(
             self, 
@@ -36,7 +36,7 @@ class FolderCleanerApp(ctk.CTk):
             text="Cleaning", 
             state="disabled", 
             command=self.clean_folder,
-            fg_color="gray",  # Initialfarbe wenn deaktiviert
+            fg_color="gray",
             font=("Helvetica", 14, "bold")
         )
         self.clean_button.pack(pady=20)
@@ -59,7 +59,7 @@ class FolderCleanerApp(ctk.CTk):
         """Wird aufgerufen, wenn ein Ordner ausgewählt wurde."""
         if choice != "-- Bitte wählen --":
             self.selected_folder = self.base_path / choice
-            self.clean_button.configure(state="normal", fg_color="#1f538d") # Zurück zur Standardfarbe
+            self.clean_button.configure(state="normal", fg_color="#1f538d")
         else:
             self.selected_folder = None
             self.clean_button.configure(state="disabled", fg_color="gray")
@@ -97,7 +97,7 @@ class FolderCleanerApp(ctk.CTk):
                 self.log_info(f"Fehler beim Verschieben von {file.name}: {e}")
                 return
 
-        # Info-Text zusammenstellen
+
         info_text = f"Reinigung abgeschlossen für: {self.selected_folder.name}\n\n"
         info_text += "Sortierte Dateien:\n"
         for ext, count in stats.items():
